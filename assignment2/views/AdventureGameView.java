@@ -2,6 +2,7 @@ package views;
 
 import AdventureModel.AdventureGame;
 import AdventureModel.AdventureObject;
+import AdventureModel.Passage;
 import AdventureModel.PassageTable;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
@@ -22,11 +23,15 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import javafx.event.EventHandler; //you will need this too!
 import javafx.scene.AccessibleRole;
+import com.sun.speech.freetts.VoiceManager;
+import com.sun.speech.freetts.Voice;
 
 import javafx.scene.Node;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Class AdventureGameView.
@@ -42,7 +47,7 @@ public class AdventureGameView {
 
     AdventureGame model; //model of the game
     Stage stage; //stage on which all is rendered
-    Button saveButton, loadButton, helpButton; //buttons
+    Button saveButton, loadButton, helpButton, startoverButton, exitgameButton; //buttons
     Boolean helpToggle = false; //is help on display?
 
     GridPane gridPane = new GridPane(); //to hold images and buttons
@@ -123,6 +128,18 @@ public class AdventureGameView {
         customizeButton(helpButton, 200, 50);
         makeButtonAccessible(helpButton, "Help Button", "This button gives game instructions.", "This button gives instructions on the game controls. Click it to learn how to play.");
         addInstructionEvent();
+
+        startoverButton = new Button("StartOver");
+        startoverButton.setId("StartOver");
+        customizeButton(startoverButton, 100, 50);
+        makeButtonAccessible(startoverButton, "StartOver button", "This button allows you to start the game over", "When you beat the game or die, you can click this button to either reset the game if you have no save files, or load to the most recent save if you have save files");
+        addStartOverEvent();
+
+        exitgameButton = new Button("ExitGame");
+        exitgameButton.setId("ExitGame");
+        customizeButton(exitgameButton, 100, 50);
+        makeButtonAccessible(exitgameButton, "ExitGame button", "This button will quit the game", "When you beat the game or die, you can click this button to exit the game and close the window");
+        addExitGameEvent();
 
         HBox topButtons = new HBox();
         topButtons.getChildren().addAll(saveButton, helpButton, loadButton);
@@ -266,7 +283,8 @@ public class AdventureGameView {
             showInstructions();
             return;
         } else if (text.equalsIgnoreCase("COMMANDS") || text.equalsIgnoreCase("C")) {
-            showCommands(); //this is new!  We did not have this command in A1
+            showCommands();//this is new!  We did not have this command in A1
+            articulateRoomCommands();
             return;
         }
 
@@ -279,11 +297,7 @@ public class AdventureGameView {
         } else if (output.equals("GAME OVER")) {
             updateScene("");
             updateItems();
-            PauseTransition pause = new PauseTransition(Duration.seconds(10));
-            pause.setOnFinished(event -> {
-                Platform.exit();
-            });
-            pause.play();
+            inputTextField.setDisable(true);
         } else if (output.equals("FORCED")) {
             //write code here to handle "FORCED" events!
             //Your code will need to display the image in the
@@ -301,20 +315,24 @@ public class AdventureGameView {
      */
     private void moveForced() {
         inputTextField.setEditable(false);
-        updateScene(null);
+        updateScene("");
         PauseTransition pause = new PauseTransition(Duration.seconds(5));
+        Button StartOver = new Button("StartOver");
+        StartOver.setId("StartOver");
+        makeButtonAccessible(StartOver, "StartOver", "Clicking this button will start over your game", "Clicking this button with your mouse will send you back to the most recent save, or start a new game from the beginning");
+
         pause.setOnFinished(event -> {
             String output = this.model.interpretAction("FORCED");
-            updateScene(null);
+            updateScene("");
             updateItems();
             if ("FORCED".equals(output)) {
                 moveForced();
             } else if ("GAME OVER".equals(output)) {
-                PauseTransition new_pause = new PauseTransition(Duration.seconds(10));
-                new_pause.setOnFinished(new_event -> {
-                    Platform.exit();
-                });
-                new_pause.play();
+//                PauseTransition new_pause = new PauseTransition(Duration.seconds(10));
+//                new_pause.setOnFinished(new_event -> {
+//                    Platform.exit();
+//                });
+//                new_pause.play();
             } else {
                 inputTextField.setEditable(true);
             }
@@ -360,6 +378,26 @@ public class AdventureGameView {
         roomPane.setPadding(new Insets(10));
         roomPane.setAlignment(Pos.TOP_CENTER);
         roomPane.setStyle("-fx-background-color: #000000;");
+        //        Account for if room is FORCED 0 for startoverbutton and exitgameButton
+        for (Passage passage : model.player.getCurrentRoom().getMotionTable().passageTable){
+            if (Objects.equals(passage.getDirection(), "FORCED") && passage.getDestinationRoom() == 0){
+                startoverButton.setVisible(true);
+                startoverButton.setDisable(false);
+                exitgameButton.setVisible(true);
+                exitgameButton.setDisable(false);
+                helpButton.setVisible(false);
+                saveButton.setVisible(false);
+                loadButton.setVisible(false);
+                helpButton.setDisable(true);
+                saveButton.setDisable(true);
+                loadButton.setDisable(true);
+                HBox test = new HBox();
+                test.getChildren().addAll(startoverButton, exitgameButton);
+                test.setSpacing(10);
+                test.setAlignment(Pos.CENTER);
+                gridPane.add(test, 1, 0, 1, 1);
+            }
+        }
 
         gridPane.add(roomPane, 1, 1);
         stage.sizeToScene();
@@ -560,6 +598,72 @@ public class AdventureGameView {
         });
     }
 
+    /**
+     * This method handles the event related to the
+     * StartOver button
+     */
+    public void addStartOverEvent(){
+        startoverButton.setOnAction(e -> {
+            model = new AdventureGame("TinyGame");
+            updateScene("");
+            updateItems();
+            stopArticulation();
+            inputTextField.setEditable(true);
+            helpButton.setDisable(false);
+            saveButton.setDisable(false);
+            loadButton.setDisable(false);
+            startoverButton.setDisable(true);
+            startoverButton.setVisible(false);
+            exitgameButton.setDisable(true);
+            exitgameButton.setVisible(false);
+            helpButton.setVisible(true);
+            loadButton.setVisible(true);
+            saveButton.setVisible(true);
+//            LoadView loadView = new LoadView(this);
+//            File dir = new File("Games/Saved");
+//            File[] files = dir.listFiles();
+//            if (files.length == 0){
+//                try {
+//                    File file = new File(".Games/TinyGame");
+//                    file.getParentFile().mkdirs();
+//                    if (!file.exists()) {
+//                        file.createNewFile();
+//                    }
+//                    model = new AdventureGame("TinyGame");
+//                } catch (IOException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//                stopArticulation();
+//                updateItems();
+//                updateScene("");
+//                loadView.closeWindowButton.fire();
+//            }
+//            else{
+//                String gamename = "./Games/Saved/" + files[files.length - 1].getName();
+//                try {
+//                    this.model = loadView.loadGame(gamename);
+//                    stopArticulation();
+//                    updateItems();
+//                    updateScene("");
+//                    loadView.closeWindowButton.fire();
+//                } catch (IOException ex) {
+//                    throw new RuntimeException(ex);
+//                } catch (ClassNotFoundException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//            }
+        });
+    }
+    /**
+     * This method handles the event related to
+     * the ExitGame button
+     */
+    public void addExitGameEvent(){
+        exitgameButton.setOnAction(e -> {
+            Platform.exit();
+        });
+    }
+
 
     /**
      * This method articulates Room Descriptions
@@ -579,6 +683,19 @@ public class AdventureGameView {
         mediaPlayer.play();
         mediaPlaying = true;
 
+    }
+    /**
+     * This method articulates commands
+     */
+    public void articulateRoomCommands(){
+        String commands = model.getPlayer().getCurrentRoom().getCommands();
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        VoiceManager vm = VoiceManager.getInstance();
+        Voice voice = vm.getVoice("kevin16");
+        voice.allocate();
+        voice.speak("The available commands for this room are");
+        voice.speak(commands);
+        voice.deallocate();
     }
 
     /**
