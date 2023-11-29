@@ -23,6 +23,8 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import javafx.event.EventHandler; //you will need this too!
 import javafx.scene.AccessibleRole;
+import com.sun.speech.freetts.VoiceManager;
+import com.sun.speech.freetts.Voice;
 
 import javafx.scene.Node;
 
@@ -281,7 +283,8 @@ public class AdventureGameView {
             showInstructions();
             return;
         } else if (text.equalsIgnoreCase("COMMANDS") || text.equalsIgnoreCase("C")) {
-            showCommands(); //this is new!  We did not have this command in A1
+            showCommands();//this is new!  We did not have this command in A1
+            articulateRoomCommands();
             return;
         }
 
@@ -601,6 +604,10 @@ public class AdventureGameView {
      */
     public void addStartOverEvent(){
         startoverButton.setOnAction(e -> {
+            model = new AdventureGame("TinyGame");
+            updateScene("");
+            updateItems();
+            stopArticulation();
             inputTextField.setEditable(true);
             helpButton.setDisable(false);
             saveButton.setDisable(false);
@@ -612,40 +619,39 @@ public class AdventureGameView {
             helpButton.setVisible(true);
             loadButton.setVisible(true);
             saveButton.setVisible(true);
-            LoadView loadView = new LoadView(this);
-            File dir = new File("Games/Saved");
-            File[] files = dir.listFiles();
-            System.out.println(files.length);
-            if (files.length == 0){
-                try {
-                    File file = new File(".Games/TinyGame");
-                    file.getParentFile().mkdirs();
-                    if (!file.exists()) {
-                        file.createNewFile();
-                    }
-                    model = new AdventureGame("TinyGame");
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                stopArticulation();
-                updateItems();
-                updateScene("");
-                loadView.closeWindowButton.fire();
-            }
-            else{
-                String gamename = "./Games/Saved/" + files[files.length - 1].getName();
-                try {
-                    this.model = loadView.loadGame(gamename);
-                    stopArticulation();
-                    updateItems();
-                    updateScene("");
-                    loadView.closeWindowButton.fire();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                } catch (ClassNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
+//            LoadView loadView = new LoadView(this);
+//            File dir = new File("Games/Saved");
+//            File[] files = dir.listFiles();
+//            if (files.length == 0){
+//                try {
+//                    File file = new File(".Games/TinyGame");
+//                    file.getParentFile().mkdirs();
+//                    if (!file.exists()) {
+//                        file.createNewFile();
+//                    }
+//                    model = new AdventureGame("TinyGame");
+//                } catch (IOException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//                stopArticulation();
+//                updateItems();
+//                updateScene("");
+//                loadView.closeWindowButton.fire();
+//            }
+//            else{
+//                String gamename = "./Games/Saved/" + files[files.length - 1].getName();
+//                try {
+//                    this.model = loadView.loadGame(gamename);
+//                    stopArticulation();
+//                    updateItems();
+//                    updateScene("");
+//                    loadView.closeWindowButton.fire();
+//                } catch (IOException ex) {
+//                    throw new RuntimeException(ex);
+//                } catch (ClassNotFoundException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//            }
         });
     }
     /**
@@ -677,6 +683,19 @@ public class AdventureGameView {
         mediaPlayer.play();
         mediaPlaying = true;
 
+    }
+    /**
+     * This method articulates commands
+     */
+    public void articulateRoomCommands(){
+        String commands = model.getPlayer().getCurrentRoom().getCommands();
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        VoiceManager vm = VoiceManager.getInstance();
+        Voice voice = vm.getVoice("kevin16");
+        voice.allocate();
+        voice.speak("The available commands for this room are");
+        voice.speak(commands);
+        voice.deallocate();
     }
 
     /**
