@@ -30,7 +30,7 @@ public class LoadView {
     private AdventureGameView adventureGameView;
     private Label selectGameLabel;
     private Button selectGameButton;
-    protected Button closeWindowButton;
+    private Button closeWindowButton;
 
     private ListView<String> GameList;
     private String filename = null;
@@ -98,7 +98,7 @@ public class LoadView {
      *
      * @param listView the ListView containing all the .ser files in the Games/Saved directory.
      */
-    protected void getFiles(ListView<String> listView) {
+    private void getFiles(ListView<String> listView) {
         File directory = new File("Games/Saved".replace("/", File.separator));
         File[] files = directory.listFiles(new GetFileFilter());
         String[] fileNames = new String[files.length];
@@ -119,7 +119,7 @@ public class LoadView {
      * @param selectGameLabel the label to use to print errors and or successes to the user.
      * @param GameList the ListView to populate
      */
-    protected void selectGame(Label selectGameLabel, ListView<String> GameList) throws IOException {
+    private void selectGame(Label selectGameLabel, ListView<String> GameList) throws IOException {
         //saved games will be in the Games/Saved folder!
         adventureGameView.stopArticulation();
         try {
