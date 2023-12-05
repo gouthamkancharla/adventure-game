@@ -1,5 +1,5 @@
-BIRD
-a water bird
+BIRDMAGICAL
+a magical water bird
 1
 
 CHEST

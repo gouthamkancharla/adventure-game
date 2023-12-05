@@ -25,7 +25,7 @@ import java.util.Arrays;
  *
  * Loads Serialized adventure games.
  */
-public class LoadView {
+public class  LoadView {
 
     private AdventureGameView adventureGameView;
     private Label selectGameLabel;
@@ -130,12 +130,12 @@ public class LoadView {
             }
             adventureGameView.model = loadGame("Games/Saved/".replace("/", File.separator) + filename);
             selectGameLabel.setText(filename + " loaded");
-            adventureGameView.updateScene(null);
+            adventureGameView.updateScene(null, false);
             adventureGameView.updateItems();
         } catch (Exception e) {
             selectGameLabel.setText("Error loading file\nStarting new game");
             adventureGameView.model = new AdventureGame(adventureGameView.model.getDirectoryName().substring(6));
-            adventureGameView.updateScene(null);
+            adventureGameView.updateScene(null, false);
             adventureGameView.updateItems();
         }
     }

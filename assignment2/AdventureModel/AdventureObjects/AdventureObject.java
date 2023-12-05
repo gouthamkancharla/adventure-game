@@ -1,29 +1,30 @@
-package AdventureModel;
+package AdventureModel.AdventureObjects;
 
-import java.io.Serializable; //you will need this to save the game!
+import AdventureModel.Room;
+
+import java.io.Serializable;
 
 /**
- * This class keeps track of the props or the objects in the game.
- * These objects have a name, description, and location in the game.
- * The player with the objects can pick or drop them as they like and
- * these objects can be used to pass certain passages in the game.
+ * The abstract class AdventureObject represents an object in an adventure game.
+ * It encapsulates properties such as name, description, location, and magical status.
  */
-public class AdventureObject implements Serializable {
+public abstract class AdventureObject implements Serializable {
     /**
      * The name of the object.
      */
     private String objectName;
-
     /**
      * The description of the object.
      */
     private String description;
-
     /**
      * The location of the object.
      */
     private Room location = null;
-
+    /**
+     * The magical status of object
+     */
+    public Boolean magical = null;
     /**
      * Adventure Object Constructor
      * ___________________________
@@ -37,8 +38,8 @@ public class AdventureObject implements Serializable {
         this.objectName = name;
         this.description = description;
         this.location = location;
+        this.magical = false;
     }
-
     /**
      * Getter method for the name attribute.
      *
@@ -47,7 +48,6 @@ public class AdventureObject implements Serializable {
     public String getName(){
         return this.objectName;
     }
-
     /**
      * Getter method for the description attribute.
      *
@@ -68,4 +68,17 @@ public class AdventureObject implements Serializable {
         return this.location;
     }
 
+    /**
+     * This method returns if the object is special if the object is special it returns
+     * magical otherwise it returns notmagical
+     *
+     * @return returns a the type of object
+     */
+    public String getMagical(){
+        if (!this.magical){
+            return("notmagical");
+        } else {
+            return("magical");
+        }
+    }
 }

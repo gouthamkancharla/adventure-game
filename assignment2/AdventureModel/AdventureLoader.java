@@ -1,5 +1,8 @@
 package AdventureModel;
 
+import AdventureModel.AdventureObjects.MagicalObject;
+import AdventureModel.AdventureObjects.NormalObject;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -97,7 +100,14 @@ public class AdventureLoader {
         BufferedReader buff = new BufferedReader(new FileReader(objectFileName));
 
         while (buff.ready()) {
+            Boolean magical = false;
             String objectName = buff.readLine();
+            Integer length = objectName.length();
+            if(objectName.length() > 7) {
+                if (objectName.substring(length - 7).equals("MAGICAL")) {
+                    magical = true;
+                }
+            }
             String objectDescription = buff.readLine();
             String objectLocation = buff.readLine();
             String separator = buff.readLine();
@@ -105,10 +115,15 @@ public class AdventureLoader {
                 System.out.println("Formatting Error!");
             int i = Integer.parseInt(objectLocation);
             Room location = this.game.getRooms().get(i);
-            AdventureObject object = new AdventureObject(objectName, objectDescription, location);
-            location.addGameObject(object);
+            if (!magical) {
+                NormalObject object = new NormalObject(objectName, objectDescription, location);
+                location.addGameObject(object);
+            }
+            else{
+                MagicalObject object = new MagicalObject(objectName, objectDescription, location);
+                location.addGameObject(object);
+            }
         }
-
     }
 
      /**

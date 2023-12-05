@@ -1,8 +1,12 @@
 package AdventureModel;
 
+import AdventureModel.AdventureObjects.AdventureObject;
+import AdventureModel.States.MagicalState;
+import AdventureModel.States.NormalState;
+import AdventureModel.States.State;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * This class keeps track of the progress
@@ -19,6 +23,12 @@ public class Player implements Serializable {
      */
     public ArrayList<AdventureObject> inventory;
 
+    public int health = 100;
+
+    /**
+     * The state of the player
+     */
+    public State state;
     /**
      * Adventure Game Player Constructor
      */
@@ -76,6 +86,18 @@ public class Player implements Serializable {
                 this.inventory.remove(i);
             }
         }
+        boolean magical = false;
+        for(int i = 0; i<this.inventory.size();i++){
+            if(this.inventory.get(i).getMagical().equals("magical")){
+                magical = true;
+            }
+        }
+        if(magical){
+            this.state = new MagicalState(this);
+        }
+        else{
+            this.state = new NormalState(this);
+        }
     }
 
     /**
@@ -93,10 +115,9 @@ public class Player implements Serializable {
      * @param object Prop or object to be added to the inventory.
      */
     public void addToInventory(AdventureObject object) {
+        this.state = this.state.addToInventory(object);
         this.inventory.add(object);
     }
-
-
     /**
      * Getter method for the current room attribute.
      *
@@ -117,5 +138,17 @@ public class Player implements Serializable {
             objects.add(this.inventory.get(i).getName());
         }
         return objects;
+    }
+
+    /**
+     * use the specifies adventure object and update the state of player accordingly
+     * @param object
+     */
+    public void useObject(AdventureObject object){
+        this.state = this.state.useObject(object);
+    }
+
+    public String getState(){
+        return (this.state.getState());
     }
 }

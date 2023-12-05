@@ -1,5 +1,7 @@
 package AdventureModel;
 
+import AdventureModel.AdventureObjects.AdventureObject;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
