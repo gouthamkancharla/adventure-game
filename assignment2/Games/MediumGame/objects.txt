@@ -45,3 +45,11 @@ a small plant murmuring "Water, water"
 CHEST
 a pirate chest
 1
+
+HATMAGICAL
+a magical hat
+2
+
+WANDMAGICAL
+a magical wand
+3

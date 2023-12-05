@@ -21,7 +21,7 @@ import java.util.Date;
  *
  * Saves Serialized adventure games.
  */
-public class SaveView {
+public class SaveView implements SaveType {
 
     static String saveFileSuccess = "Saved Adventure Game!!";
     static String saveFileExistsError = "Error: File already exists";
@@ -92,7 +92,7 @@ public class SaveView {
      * If the file doesn't end in .ser, set the saveFileErrorLabel to the text in saveFileNotSerError
      * Otherwise, load the file and set the saveFileErrorLabel to the text in saveFileSuccess
      */
-    private void saveGame() {
+    public void saveGame() {
         //Code partially generated in response to comments. GitHub CoPilot, 8 Oct. 2023, https://github.com/features/copilot
         try {
             String name = saveFileNameTextField.getText();

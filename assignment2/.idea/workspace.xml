@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="307cfa04-ca19-4500-a743-ad3c13be6bda" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdventureModel/AdventureGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/AdventureModel/AdventureGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/assignment2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/AdventureGameApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/AdventureGameApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/AdventureModel/AdventureGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/AdventureModel/AdventureGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/AdventureModel/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/AdventureModel/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/BasicAdventureTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/BasicAdventureTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/Games/TinyGame/rooms.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/Games/TinyGame/rooms.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/views/AdventureGameView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/views/AdventureGameView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/views/AdventureGameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/views/AdventureGameView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/views/GetFileFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/views/GetFileFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/views/LoadView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/views/LoadView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment2/views/SaveView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment2/views/SaveView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/AdventureGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/views/AdventureGameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/LoadView.java" beforeDir="false" afterPath="$PROJECT_DIR$/views/LoadView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/SaveView.java" beforeDir="false" afterPath="$PROJECT_DIR$/views/SaveView.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2Y9CW8u1O67Khbi4BsS9XXKkjgc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "jdk.selected.JAVA_MODULE": "20",
+    "last_opened_file_path": "C:/Users/user/CSC207/java-fx/javafx-sdk-21/lib/javafx.web.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\CSC207\group_78\assignment2\Games\MediumGame\objectImages" />
+      <recent name="C:\Users\user\CSC207\group_78\assignment2\out\production\assignment2\Games\MediumGame\objectImages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\CSC207\group_78\assignment2\out\production\assignment2\Games\TinyGame" />
+      <recent name="C:\Users\user\CSC207\group_78\assignment2\out\production\assignment2\Games\MediumGame" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.AdventureGameApp">
+    <configuration name="AdventureGameApp" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Java/jdk-20" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="AdventureGameApp" />
+      <module name="assignment2" />
+      <option name="PROGRAM_PARAMETERS" value="--module-path &quot;C:\Users\user\CSC207\java-fx\javafx-sdk-21\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.media" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\user\CSC207\java-fx\javafx-sdk-21\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.media" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTroll" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Trolls.GameTroll" />
+      <module name="assignment2" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\user\CSC207\java-fx\javafx-sdk-21\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.media" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasicMagicalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assignment2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BasicMagicalTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasicMagicalTest.oneNormalOneMagical" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assignment2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BasicMagicalTest" />
+      <option name="METHOD_NAME" value="oneNormalOneMagical" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasicMagicalTest.simpleBlockedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assignment2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BasicMagicalTest" />
+      <option name="METHOD_NAME" value="simpleBlockedTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasicMagicalTest.simpleStateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="assignment2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BasicMagicalTest" />
+      <option name="METHOD_NAME" value="simpleStateTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.AdventureGameApp" />
+      <item itemvalue="Application.GameTroll" />
+      <item itemvalue="JUnit.BasicMagicalTest" />
+      <item itemvalue="JUnit.BasicMagicalTest.oneNormalOneMagical" />
+      <item itemvalue="JUnit.BasicMagicalTest.simpleBlockedTest" />
+      <item itemvalue="JUnit.BasicMagicalTest.simpleStateTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GameTroll" />
+        <item itemvalue="JUnit.BasicMagicalTest" />
+        <item itemvalue="JUnit.BasicMagicalTest.oneNormalOneMagical" />
+        <item itemvalue="JUnit.BasicMagicalTest.simpleBlockedTest" />
+        <item itemvalue="JUnit.BasicMagicalTest.simpleStateTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="307cfa04-ca19-4500-a743-ad3c13be6bda" name="Changes" comment="" />
+      <created>1699928440500</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699928440500</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/assignment2$AdventureGameApp.ic" NAME="AdventureGameApp Coverage Results" MODIFIED="1701300810933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/assignment2$GameTroll.ic" NAME="GameTroll Coverage Results" MODIFIED="1701216835596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>.*</FILTER>
+    </SUITE>
+  </component>
+</project>

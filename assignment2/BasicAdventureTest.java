@@ -2,9 +2,13 @@
 import java.io.IOException;
 
 import AdventureModel.AdventureGame;
+import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
+import views.AdventureGameView;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import javafx.stage.StageStyle;
 
 public class BasicAdventureTest {
     @Test

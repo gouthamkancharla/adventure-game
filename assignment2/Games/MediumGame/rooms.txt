@@ -5,11 +5,11 @@ building.  A small stream flows out of the building and
 down a gully to the south.  A road runs up a small hill
 to the west.
 -----
-WEST       2
+WEST       2/GAMETROLL
 UP         2
 NORTH      3
 IN         3
-SOUTH      4
+SOUTH      4/HELPERTROLL
 DOWN       4
 
 2

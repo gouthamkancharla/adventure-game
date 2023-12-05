@@ -2,9 +2,9 @@
 Outside building
 You are standing at the end of a road before a small brick building.  A small stream flows out of the building and down a gully to the south.  A road runs up a small hill to the west.
 -----
-WEST       2
-UP         2
-NORTH      3
+WEST       2/TROLL10
+UP         2/TIME-13:00-14:00
+NORTH      3/TRAP50
 IN         3
 SOUTH      4
 DOWN       4
@@ -23,7 +23,7 @@ You are inside a building, a well house for a large spring. The exit door is to 
 -----
 SOUTH      1
 WEST       5
-OUT        6/BIRD
+OUT        6
 OUT        1
 NORTH     3
 XYZZY     2/BOOK
@@ -55,7 +55,7 @@ WEST       6
 Curtain1
 You are passing through a curtain!
 -----
-FORCED    7/BIRD
+FORCED    7
 FORCED    9
 
 7
